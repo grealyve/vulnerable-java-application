@@ -5,11 +5,16 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- task: Gradle@3
+- task: FortifySCA@7
   inputs:
-    gradleWrapperFile: 'gradlew'
-    tasks: 'build'
-    publishJUnitResults: true
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.21'
-    jdkArchitectureOption: 'x64'
+    applicationType: 'other'
+    buildToolOptions: 'gradle clean build'
+    fortifyBuildId: 'testGradle'
+    scaVerbose: true
+    scaDebug: true
+    fortifyScanType: 'ScanCentralScan'
+    scanCentralFortifyServerName: 'SSC Connection'
+    scanCentralRunFortifyUpload: true
+    scanCentralFortifyApplicationIdentifierType: 'byId'
+    scanCentralFortifyApplicationVersionId: '10004'
+    taskResultForBuildFailureCriteria: 'FAIL'
