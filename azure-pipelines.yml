@@ -3,14 +3,7 @@ trigger:
 
 pool: Default
 
-steps:
-- script: |
-    echo "Fortify SCA version:"
-    sourceanalyzer -v
-    echo "Fortify SCA location in PATH:"
-    which sourceanalyzer
-  displayName: 'Check Fortify SCA version and path'
-  
+steps:  
 - task: FortifySCA@7
   inputs:
     applicationType: 'other'
