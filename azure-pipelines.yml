@@ -9,8 +9,6 @@ steps:
     sourceanalyzer -v
     echo "Fortify SCA location in PATH:"
     which sourceanalyzer
-    echo "Current PATH:"
-    echo $PATH
   displayName: 'Check Fortify SCA version and path'
   
 - task: FortifySCA@7
