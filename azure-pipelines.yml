@@ -11,14 +11,7 @@ steps:
 - script: set
   displayName: 'envrionments'
 
-- task: FortifyScanCentralSAST@7
-  inputs:
-    scanCentralCtrlUrl: 'https://192.168.13.176:8483/scancentral-ctrl'
-    scanCentralClientToken: 'ClientSSC!'
-    sscUrl: 'https://192.168.13.176:8443/ssc'
-    sscCiToken: '7adb4728-391f-45e8-ac5f-309cbff2964a'
-    uploadToSSC: true
-    applicationName: 'java_gradle'
-    applicationVersion: 'azure'
-    buildTool: 'gradle'
-    buildCommand: 'gradle clean build'
+- script: |
+    echo %NODE_EXTRA_CA_CERTS%
+    scancentral -sscurl https://192.168.13.176:8443/ssc -ssctoken 7adb4728-391f-45e8-ac5f-309cbff2964a start -bt gradle -upload -application java_gradle -version azure -uptoken 7adb4728-391f-45e8-ac5f-309cbff2964a
+  displayName: 'Scan'
