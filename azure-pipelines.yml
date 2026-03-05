@@ -4,16 +4,15 @@ trigger:
 pool: Default
 
 steps:  
-- task: FortifySCA@7
+
+- task: FortifyScanCentralSAST@7
   inputs:
-    applicationType: 'other'
-    buildToolOptions: 'gradle clean build'
-    fortifyBuildId: 'testGradle'
-    scaVerbose: true
-    scaDebug: true
-    fortifyScanType: 'ScanCentralScan'
-    scanCentralFortifyServerName: 'SSC Connection'
-    scanCentralRunFortifyUpload: true
-    scanCentralFortifyApplicationIdentifierType: 'byId'
-    scanCentralFortifyApplicationVersionId: '10004'
-    taskResultForBuildFailureCriteria: 'FAIL'
+    scanCentralCtrlUrl: 'https://192.168.13.176:8483/scancentral-ctrl'
+    scanCentralClientToken: 'ClientSSC!'
+    sscUrl: 'https://192.168.13.176:8443/ssc'
+    sscCiToken: '7adb4728-391f-45e8-ac5f-309cbff2964a'
+    uploadToSSC: true
+    applicationName: 'java_gradle'
+    applicationVersion: 'azure'
+    buildTool: 'gradle'
+    buildCommand: 'gradle clean build'
