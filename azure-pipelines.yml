@@ -5,6 +5,12 @@ pool: Default
 
 steps:  
 
+- script: where scancentral
+  displayName: 'Where am I?'
+
+- script: set
+  displayName: 'envrionments'
+
 - task: FortifyScanCentralSAST@7
   inputs:
     scanCentralCtrlUrl: 'https://192.168.13.176:8483/scancentral-ctrl'
